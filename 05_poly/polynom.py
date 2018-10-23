@@ -42,19 +42,11 @@ def polyMultiply(poly1, poly2):
     len_x = len(poly1)
     len_y = len(poly2)
 
-    matrix = [[0 for x in range(len_x)] for y in range(len_y)]
+    result = [0] * (len_x + len_y - 1)
 
     for y in range(0, len_y):
         for x in range(0, len_x):
-            matrix[y][x] = poly1[x] * poly2[y]
-
-    result = [0] * (len_x + len_y - 1)
-
-    for exp in range(0, len(result)):
-        for y in range(0, len_y):
-            for x in range(0, len_x):
-                if x + y == exp:
-                    result[exp] += matrix[y][x]
+            result[x + y] += poly1[x] * poly2[y]
 
     return result
 
